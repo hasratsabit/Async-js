@@ -1,0 +1,10 @@
+{
+  "name": "John Doe",
+  "Job": "Teacher",
+  "age": 23,
+  "address": {
+    "street": "111 main street",
+    "city": "Alexndria",
+    "state": "Virginia"
+  }
+}
