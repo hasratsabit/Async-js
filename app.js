@@ -1,5 +1,6 @@
 window.onload = function() {
 
+  /*
   var http = new XMLHttpRequest();
 
   // Declares
@@ -22,6 +23,47 @@ window.onload = function() {
       '<li>' + data.address.city + '</li>'
     )
   })
+
+  */
+
+  // AJAX: One way to avoid callback hell
+  function errorHandler(jqXHR, textStatus, error) {
+    console.log(error);
+  }
+
+  $.ajax({
+    type: "GET",
+    url: "person.json",
+    success: personCallback,
+    error: errorHandler
+  });
+
+  function personCallback(data) {
+    console.log(data);
+  }
+
+  $.ajax({
+    type: "GET",
+    url: "person2.json",
+    success: person2Callback,
+    error: errorHandler
+  });
+
+  function person2Callback(data) {
+    console.log(data);
+  }
+
+  $.ajax({
+    type: "GET",
+    url: "person3.json",
+    success: person3Callback,
+    error: errorHandler
+  });
+
+  function person3Callback(data) {
+    console.log(data);
+  }
+
 }
 
 

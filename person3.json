@@ -1,0 +1,10 @@
+{
+  "name": "John Smith",
+  "Job": "Police Officer",
+  "age": 30,
+  "address": {
+    "street": "111 main street",
+    "city": "Denver",
+    "state": "Colorado"
+  }
+}
