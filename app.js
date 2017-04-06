@@ -1,6 +1,9 @@
 window.onload = function() {
 
   /*
+
+  HTTP Requests
+
   var http = new XMLHttpRequest();
 
   // Declares
@@ -26,6 +29,7 @@ window.onload = function() {
 
   */
 
+  /*
   // AJAX: One way to avoid callback hell
   function errorHandler(jqXHR, textStatus, error) {
     console.log(error);
@@ -64,6 +68,55 @@ window.onload = function() {
     console.log(data);
   }
 
+  */
+
+  // /*
+  // HTTP and Promise
+  function get(url) {
+    return new Promise(function(resolve, reject) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", url, true);
+      xhttp.onload = function() {
+        if(xhttp.status == 200) {
+          resolve(JSON.parse(xhttp.response));
+        }else {
+          reject(xhttp.statusText)
+        }
+      };
+      xhttp.onerror = function() {
+        reject(xhttp.statusText)
+      };
+      xhttp.send();
+    });
+  }
+
+  var promise = get("person.json");
+  promise.then(function(person) {
+    console.log(person);
+    return get("person2.json");
+  }).then(function(person2) {
+    console.log(person2);
+    return get("person3.json");
+  }).then(function(person3) {
+    console.log(person3);
+  }).catch(function(error) {
+    console.log(error);
+  })
+
+  // AJAX and Promise
+  $.get('person.json').then(function(person) {
+    console.log(person);
+    return $.get('person2.json');
+  }).then(function(person2) {
+    console.log(person2);
+    return $.get('person3.json');
+  }).then(function(person3) {
+    console.log(person3);
+  }).catch(function(error) {
+    console.log(error);
+  })
+
+  */
 }
 
 
