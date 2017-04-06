@@ -70,7 +70,7 @@ window.onload = function() {
 
   */
 
-  // /*
+  /*
   // HTTP and Promise
   function get(url) {
     return new Promise(function(resolve, reject) {
@@ -117,6 +117,76 @@ window.onload = function() {
   })
 
   */
+
+  /*
+  // Generators
+
+  function* gen() {
+    console.log('apple');
+    console.log('orange');
+    console.log('banana');
+  }
+
+  var myGen = gen();
+  myGen.next();
+
+  // Using yeild keyword
+  function* gen1() {
+    yield console.log('apple');
+    yield console.log('orange');
+    yield console.log('banana');
+  }
+
+  var myGen1 = gen1();
+  myGen1.next();
+  myGen1.next();
+  myGen1.next();
+
+
+  // Passing Value
+  function* gen2() {
+    var a = yield "apple";
+    var b = yield "orange";
+    var c = yield "banana";
+
+    return a + b + c;
+  }
+
+  var myGen2 = gen2();
+  console.log(myGen2.next());
+  console.log(myGen2.next(4));
+  console.log(myGen2.next(8));
+  console.log(myGen2.next(10));
+
+  */
+
+  // Generators and Asynchronous
+  genWrap(function* () {
+
+    let person = yield $.get('person.json');
+    console.log(person);
+    let person2 = yield $.get('person2.json');
+    console.log(person2);
+    let person3 = yield $.get('person3.json');
+    console.log(person3);
+
+  });
+
+  function genWrap(generator) {
+
+    var gen = generator();
+
+    function handle(yielded) {
+      if(!yielded.done) {
+        yielded.value.then(function(data) {
+          return handle(gen.next(data));
+        })
+      }
+    }
+
+    return handle(gen.next())
+  }
+
 }
 
 
