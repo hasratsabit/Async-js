@@ -1,8 +1,8 @@
 window.onload = function() {
 
-  /*
 
-  HTTP Requests
+
+  // HTTP Requests
 
   var http = new XMLHttpRequest();
 
@@ -12,6 +12,12 @@ window.onload = function() {
       console.log(JSON.parse(http.response));
     }
   }
+
+  // 0 - request is not initialized
+  // 1 - request has been set up
+  // 2 - request has been sent
+  // 3 - request is in process
+  // 4 - request is complete
 
   // Grabs the data. True is for asynchronous and false is for sync
   http.open("GET", "person.json", true)
@@ -27,9 +33,8 @@ window.onload = function() {
     )
   })
 
-  */
 
-  /*
+
   // AJAX: One way to avoid callback hell
   function errorHandler(jqXHR, textStatus, error) {
     console.log(error);
@@ -68,9 +73,8 @@ window.onload = function() {
     console.log(data);
   }
 
-  */
 
-  /*
+
   // HTTP and Promise
   function get(url) {
     return new Promise(function(resolve, reject) {
@@ -116,9 +120,8 @@ window.onload = function() {
     console.log(error);
   })
 
-  */
 
-  /*
+
   // Generators
 
   function* gen() {
@@ -158,7 +161,6 @@ window.onload = function() {
   console.log(myGen2.next(8));
   console.log(myGen2.next(10));
 
-  */
 
   // Generators and Asynchronous
   genWrap(function* () {
@@ -188,15 +190,3 @@ window.onload = function() {
   }
 
 }
-
-
-
-/*
-
-0 - request is not initialized
-1 - request has been set up
-2 - request has been sent
-3 - request is in process
-4 - request is complete
-
-*/
